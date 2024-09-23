@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Record Detail{% endblock %}
+
+{% block content %}
+<h2>Record Detail</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ record.record_type }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Uploaded on {{ record.created_at }}</h6>
+        <p class="card-text">IPFS Hash: {{ record.ipfs_hash }}</p>
+        <p class="card-text">IPNS Key: {{ record.ipns_key }}</p>
+        <h6>Content:</h6>
+        <pre>{{ record_content }}</pre>
+    </div>
+</div>
+<h3 class="mt-4">Access Log</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Accessed By</th>
+            <th>Access Time</th>
+            <th>Transaction Hash</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in access_logs %}
+        <tr>
+            <td>{{ log.accessed_by }}</td>
+            <td>{{ log.access_time }}</td>
+            <td>{{ log.transaction_hash }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No access logs found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Health Records System{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Health Records System</h1>
+<p>This system allows you to securely store and manage your health records using blockchain technology.</p>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h2>For Patients</h2>
+        <ul>
+            <li>Upload and manage your health records</li>
+            <li>Control access to your records</li>
+            <li>View your record history</li>
+        </ul>
+        <a href="{% url 'upload_file' %}" class="btn btn-primary">Upload a Record</a>
+    </div>
+    <div class="col-md-6">
+        <h2>For Doctors</h2>
+        <ul>
+            <li>Request access to patient records</li>
+            <li>View authorized records</li>
+            <li>Update patient information</li>
+        </ul>
+        <a href="{% url 'view_records' %}" class="btn btn-secondary">View Records</a>
+    </div>
+</div>
+{% endblock %}

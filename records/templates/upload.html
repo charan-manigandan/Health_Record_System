@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Health Record{% endblock %}
+
+{% block content %}
+<h2>Upload Health Record</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="file" class="form-label">Select File</label>
+        <input type="file" class="form-control" id="file" name="file" required>
+    </div>
+    <div class="mb-3">
+        <label for="record_type" class="form-label">Record Type</label>
+        <select class="form-select" id="record_type" name="record_type" required>
+            <option value="">Select a record type</option>
+            <option value="lab_result">Lab Result</option>
+            <option value="prescription">Prescription</option>
+            <option value="medical_history">Medical History</option>
+            <option value="imaging">Imaging</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Add any client-side validation or IPFS integration here
+</script>
+{% endblock %}
