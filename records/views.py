@@ -101,9 +101,10 @@ def upload_file(request):
         ipfs_api.create_ipns_record(ipns_key)
         ipfs_api.update_ipns_record(ipns_key, temp_file_path)
         import os
-        os.remove(temp_file_path)
+        file_name = os.remove(temp_file_path)
         health_record = HealthRecord.objects.create(
                 patient=request.user,
+                record_name = file_name,
                 record_id=cid,
                 ipfs_hash=ipns_key,
             )

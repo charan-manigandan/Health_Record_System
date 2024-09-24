@@ -9,16 +9,17 @@
         <tr>
             <th>Record Type</th>
             <th>Date Uploaded</th>
-            <th>IPFS Hash</th>
+            <th>IPFS CID</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for record in records %}
         <tr>
-            <td>{{ record.record_id }}</td>
+            <td>{{ record.record_name }}</td>
             <td>{{ record.created_at }}</td>
-            <td>{{ record.ipfs_hash }}</td>
+            <td>{{ record.record_id }}</td>
+            {% comment %} <td>{{ record.ipfs_hash }}</td> {% endcomment %}
             <td>
                 <a href="{% url 'retrieve_file' record.record_id %}" class="btn btn-sm btn-primary">Download</a>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileModal">View File</button>

@@ -4,6 +4,7 @@ from web3 import Web3
 
 class HealthRecord(models.Model):
     patient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='health_records')
+    record_name = models.CharField(max_length=50, null=True, blank=True)
     record_id = models.CharField(max_length=66, unique=True)
     ipfs_hash = models.CharField(max_length=46)
     created_at = models.DateTimeField(auto_now_add=True)
