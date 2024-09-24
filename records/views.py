@@ -89,7 +89,7 @@ def upload_file(request):
         file = request.FILES['file']
         file_name = file.name
         file_content = file.read()
-        file_record_type = request.POST['records']
+        file_record_type = request.POST['record_type']
         
         # Save the file temporarily
         temp_file_path = f"{settings.MEDIA_ROOT}/temp_{file_name}"
@@ -101,10 +101,10 @@ def upload_file(request):
         ipfs_api.create_ipns_record(ipns_key)
         ipfs_api.update_ipns_record(ipns_key, temp_file_path)
         import os
-        file_name = os.remove(temp_file_path)
+        os.remove(temp_file_path)
         health_record = HealthRecord.objects.create(
                 patient=request.user,
-                record_name = file_name,
+                record_name=file_name,
                 record_id=cid,
                 ipfs_hash=ipns_key,
             )
