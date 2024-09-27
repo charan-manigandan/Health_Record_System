@@ -22,7 +22,7 @@
             {% comment %} <td>{{ record.ipfs_hash }}</td> {% endcomment %}
             <td>
                 <a href="{% url 'retrieve_file' record.record_id %}" class="btn btn-sm btn-primary">Download</a>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileModal">View File</button>
+                {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileModal">View File</button> {% endcomment %}
                 <div class="modal fade" id="fileModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
