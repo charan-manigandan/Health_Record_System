@@ -3,7 +3,7 @@ import platform
 
 requirements = [
     'pyunormalize==15.1.0',
-    'psycopg2'
+    'psycopg2==2.9.9',
 ]
 
 if platform.system() == 'Windows':
