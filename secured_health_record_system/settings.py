@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 import dj_database_url
 
 env = environ.Env(
+    DEBUG=(bool, False)
 )
 
 load_dotenv()
