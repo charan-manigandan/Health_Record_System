@@ -2,7 +2,8 @@ from setuptools import setup, find_packages
 import platform
 
 requirements = [
-    'pyunormalize==15.1.0'
+    'pyunormalize==15.1.0',
+    'psycopg2'
 ]
 
 if platform.system() == 'Windows':
