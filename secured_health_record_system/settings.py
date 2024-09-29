@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'secured_health_record_system.wsgi.application'
 
 if 'DYNO' in os.environ:  # This checks if the app is running on Heroku
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, ssl_require=False)
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 else:
     DATABASES = {
