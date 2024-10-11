@@ -20,7 +20,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-load_dotenv()
+# load_dotenv()
 environ.Env.read_env() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -36,7 +36,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['.railway.app', 'localhost'])
 
 
 # Application definition
@@ -86,7 +86,12 @@ WSGI_APPLICATION = 'secured_health_record_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if 'DYNO' in os.environ:  # This checks if the app is running on Heroku
+# if 'DYNO' in os.environ:  # This checks if the app is running on Heroku
+#     DATABASES = {
+#         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+#     }
+
+if 'RAILWAY_STATIC_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
