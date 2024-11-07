@@ -18,9 +18,7 @@ import dj_database_url
 
 load_dotenv()
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
